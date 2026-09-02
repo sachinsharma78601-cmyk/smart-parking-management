@@ -16,4 +16,3 @@ VALUES
 ('A06','Occupied');
 
 SELECT * FROM parking_slots;
-create table vehicle_information ()
