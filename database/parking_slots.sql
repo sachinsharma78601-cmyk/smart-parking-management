@@ -59,3 +59,25 @@ values
 (5, 5, 5, 'DL05IJ7890', '2026-09-03 15:00:00', '2026-09-03 18:00:00', 'Booked');
 
 select * from BOOKINGS;
+
+CREATE TABLE parking_records (
+record_id int primary key auto_increment,
+booking_id int,
+entry_time datetime,
+exit_time datetime,
+duration_minutes int,
+amount decimal(10,2),
+foreign key (booking_id) references BOOKINGS(booking_id)
+);
+
+
+INSERT INTO parking_records
+(booking_id, entry_time, exit_time, duration_minutes, amount)
+VALUES
+(1, '2026-09-01 09:00:00', '2026-09-01 11:30:00', 150, 75.00),
+(2, '2026-09-01 10:15:00', '2026-09-01 13:15:00', 180, 90.00),
+(3, '2026-09-01 12:00:00', '2026-09-01 14:00:00', 120, 60.00),
+(4, '2026-09-02 09:30:00', '2026-09-02 12:30:00', 180, 90.00),
+(5, '2026-09-02 14:00:00', '2026-09-02 17:30:00', 210, 105.00);
+
+select * from parking_records;
