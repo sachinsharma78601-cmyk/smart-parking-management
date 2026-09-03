@@ -35,3 +35,27 @@ VALUES
 ('A06','Occupied');
 
 SELECT * FROM parking_slots;
+
+
+CREATE TABLE BOOKINGS(
+BOOKING_ID INT PRIMARY KEY auto_increment,
+user_id int,
+slot_id int,
+vehichle_number varchar(20),
+start_time datetime,
+end_time datetime,
+status ENUM('BOOKED', 'ACTIVE', 'COMPLETED', 'CANCELLED')DEFAULT 'BOOKED',
+foreign key (user_id) REFERENCES USERS(user_id),
+foreign key (slot_id) references parking_slots(slot_id)
+);
+
+insert into BOOKINGS
+(BOOKING_ID, user_id, slot_id, vehichle_number, start_time, end_time, status)
+values
+(1, 1, 1, 'DL01AB1234', '2026-09-03 09:00:00', '2026-09-03 11:00:00', 'Completed'),
+(2, 2, 2, 'DL02CD5678', '2026-09-03 10:00:00', '2026-09-03 13:00:00', 'Completed'),
+(3, 3, 3, 'DL03EF9012', '2026-09-03 12:00:00', '2026-09-03 15:00:00', 'Active'),
+(4, 4, 4, 'DL04GH3456', '2026-09-03 14:00:00', '2026-09-03 17:00:00', 'Booked'),
+(5, 5, 5, 'DL05IJ7890', '2026-09-03 15:00:00', '2026-09-03 18:00:00', 'Booked');
+
+select * from BOOKINGS;
