@@ -81,3 +81,12 @@ VALUES
 (5, '2026-09-02 14:00:00', '2026-09-02 17:30:00', 210, 105.00);
 
 select * from parking_records;
+
+create table PAYMENTS(
+payment_id int primary key auto_increment,
+booking_id int,
+amount decimal(10,2),
+payment_status enum ('pending', 'paid', 'failed') default 'pending',
+payment_time datetime,
+foreign key (booking_id) references BOOKINGS(booking_id)
+);
