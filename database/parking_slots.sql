@@ -89,4 +89,15 @@ amount decimal(10,2),
 payment_status enum ('pending', 'paid', 'failed') default 'pending',
 payment_time datetime,
 foreign key (booking_id) references BOOKINGS(booking_id)
-);
+); 
+
+INSERT INTO PAYMENTS
+(payment_id, booking_id, amount, payment_status, payment_time)
+VALUES
+(1, 1, 75.00, 'paid', '2026-09-03 11:35:00'),
+(2, 2, 90.00, 'paid', '2026-09-03 13:20:00'),
+(3, 3, 60.00, 'pending', NULL),
+(4, 4, 90.00, 'pending', NULL),
+(5, 5, 105.00, 'pending', NULL);
+
+SELECT * FROM PAYMENTS;
